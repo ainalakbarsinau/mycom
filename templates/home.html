@@ -5,45 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Store</title>
     <style>
-        h1.judul {
-            color: white;
-            text-align: center;
-        }
+        /* CSS styling */
         body {
-            background-color: darkgrey;
-        }
-        nav.menu {
-            color: black;
-            text-align: center;
-        }
-        img.foto1 {
-            text-align: center;
-            width: 30%;
-            display: block;
-            margin: 0 auto;
-        }
-        li.list-produk {
-            text-align: center;
-            list-style: none;
-        }
-        h2.judul-produk {
-        color: brown;
+            background-color: lightblue;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
         .navbar {
-        overflow: hidden;
-        background-color: #ca522d;
+            background-color: #1551d4;
+            overflow: hidden;
         }
         .navbar a {
             float: left;
             display: block;
-            color: #f2f2f2;
+            color: white;
             text-align: center;
             padding: 14px 20px;
             text-decoration: none;
         }
         .navbar a:hover {
             background-color: #ddd;
-            color: black;
+            color: rgb(17, 29, 190);
+        }
+        .produk-img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #3819c2;
+            color: rgb(6, 8, 8);
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .menu a {
+            color: rgb(220, 221, 230);
+            text-decoration: none;
+            padding: 0 10px;
+        }
+        .menu a:hover {
+            color: #c3cacf;
+            background-color: #ddd;
         }
     </style>
 </head>
@@ -51,35 +58,37 @@
 
     <header>
         <div class="navbar">
-            <a href="#home">Home</a>
-            <a href="#">ringkasan</a>
-            <a href="#">ulasan</a>
-            <a href="#">deskripsi</a>
-            <a href="#">rekomendasi</a>
-          </div>
+            <a href="#home" id="home">Home</a>
+            <a href="#">Ringkasan</a>
+            <a href="#">Ulasan</a>
+            <a href="#">Deskripsi</a>
+            <a href="#">Rekomendasi</a>
+        </div>
     </header>
 
-    <h1 class="judul">Welcome to Ainalstore!</h1>
-    <img src=""class="foto1" alt=""> 
+    <h1 class="judul">Welcome to ainalstore!</h1>
+    <!-- Contoh gambar produk -->
+    <img src="gambar_produk.jpg" class="produk-img" alt="Product Image"> 
     <ul>
+        <!-- Loop through products -->
         {% for product in products %}
             <li class="list-produk">
                 <h2 class="judul-produk">{{ product.name }}</h2>
                 <p>Category: {{ product.category }}</p>
                 <p>Price: Rp{{ product.price }}</p>
                 <a href="{% url 'product_detail' product_id=product.id %}">View Details</a>
-                <!-- Tambahkan detail lainnya sesuai kebutuhan -->
+                <!-- Add other details as needed -->
             </li>
         {% endfor %}
     </ul>
     
     <footer>
         <nav class="menu">
-            <a href="#">Home</a>
-            <a href="#">ringkasan</a>
-            <a href="#">ulasan</a>
-            <a href="#">deskripsi</a>
-            <a href="#">rekomendasi</a>
+            <a href="#home">Home</a>
+            <a href="#">Ringkasan</a>
+            <a href="#">Ulasan</a>
+            <a href="#">Deskripsi</a>
+            <a href="#">Rekomendasi</a>
         </nav>
     </footer>
 </body>
