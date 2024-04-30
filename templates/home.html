@@ -29,11 +29,13 @@
             color: rgb(17, 29, 190);
         }
         .produk-img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 20px;
-        }
+    max-width: 200px; 
+    height: auto; 
+    display: block;
+    margin: 0 auto 10px; 
+}
+
+        
         footer {
             background-color: #3819c2;
             color: rgb(6, 8, 8);
@@ -52,6 +54,30 @@
             color: #c3cacf;
             background-color: #ddd;
         }
+        .foto1 {
+    width: 300px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.judul {
+    text-align: center;
+}
+.centered-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; 
+}
+
+.list-produk {
+    display: inline-block; 
+    margin: 0 10px; 
+    text-align: left; 
+}
+
+
     </style>
 </head>
 <body>
@@ -66,20 +92,25 @@
         </div>
     </header>
 
-    <h1 class="judul">Welcome to ainalstore!</h1>
+    <h1 class="judul" style="text-align: center;">Welcome to ainalstore!</h1>
     <!-- Contoh gambar produk -->
-    <img src="gambar_produk.jpg" class="produk-img" alt="Product Image"> 
+    <img src="https://www.nusantara-sakti.com/images/news/Mengetahui_Beberapa_Sparepart_Dan_Fungsinya.jpg"class="foto1"alt="">
     <ul>
         <!-- Loop through products -->
-        {% for product in products %}
-            <li class="list-produk">
-                <h2 class="judul-produk">{{ product.name }}</h2>
-                <p>Category: {{ product.category }}</p>
-                <p>Price: Rp{{ product.price }}</p>
-                <a href="{% url 'product_detail' product_id=product.id %}">View Details</a>
-                <!-- Add other details as needed -->
-            </li>
-        {% endfor %}
+            <ul class="centered-list">
+                {% for product in products %}
+                    <li class="list-produk">
+                        <h2 class="judul-produk">{{ product.name }}</h2>
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}" class="produk-img">
+                        <p>Category: {{ product.category }}</p>
+                        <p>Price: Rp{{ product.price }}</p>
+                        <a href="{% url 'product_detail' product_id=product.id %}">View Details</a>
+                        <!-- Add other details as needed -->
+                    </li>
+                {% endfor %}
+            
+        </ul>
+        
     </ul>
     
     <footer>
